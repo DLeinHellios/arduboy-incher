@@ -1,0 +1,13 @@
+# Compiled binaries
+*.hex
+
+# Archives
+*.zip
+*.7z
+*.rar
+
+# Converted map files
+mapdata/*.h
+
+# Raw image directory
+images/*
