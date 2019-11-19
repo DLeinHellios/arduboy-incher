@@ -1,6 +1,5 @@
 // Incher - Worm Guiding Simulator for the Arduboy Game System
-// Code by Dial
-// Art by Schuss
+
 
 #include "constants.h"
 #include "globals.h"
