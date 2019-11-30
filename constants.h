@@ -4,9 +4,9 @@
 
 #define GAME_FPS 30 // Frames per second
 
-#define ENABLE_LEVEL_SELECT 0 // Enables level select option for debugging
-#define SELECT_LEVEL 2 // Select level # if level select - n < MAP_TYPES
-#define MAP_TYPES 3 // Max number for random map selection - must have selection logic in readMap()
+#define ENABLE_LEVEL_SELECT 0 // Enables level select option
+#define SELECT_LEVEL 0 // Select level # if level select | n < MAP_TYPES
+#define MAP_TYPES 5 // Max number for random map selection | needs selection logic in readMap() and array in tilemaps.h
 #define OFFSET_X 4 // Pixel offset for drawing game screen
 #define MAX_X 14 // Number of horizonal tiles
 #define MAX_Y 6 // Number of vertical tiles

@@ -153,12 +153,16 @@ void randomizeFaces(byte xPos[MAX_SPAWN_FACES], byte yPos[MAX_SPAWN_FACES]) {
 
 byte readMap(byte nMap, byte nTile) {
     // Returns a tile from a map
-    if (nMap == 0) { // Four Corners
+    if (nMap == 0) {
         return pgm_read_byte(&map0[nTile]);
-    } else if (nMap == 1) { // Long Route
+    } else if (nMap == 1) {
         return pgm_read_byte(&map1[nTile]);
-    } else if (nMap == 2) { // Zig Zag
+    } else if (nMap == 2) {
         return pgm_read_byte(&map2[nTile]);
+    } else if (nMap == 3) {
+        return pgm_read_byte(&map3[nTile]);
+    } else if (nMap == 4) {
+        return pgm_read_byte(&map4[nTile]);
     }
 }
 
