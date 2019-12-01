@@ -7,12 +7,6 @@ Incher is a worm-guiding simulator for the [Arduboy](https://arduboy.com) game s
 ## Gameplay
 Incher is a Rogue-lite with an emphasis on the "lite" - all you do is move. Use the d-pad to navigate your worms, avoiding the bombs and faces, collect the key, reach the portal, repeat. Maps are chosen at random, and map elements are further randomized. The faces make their move between each inch, and appear to be a little more nimble than our valiant worm friends. This tower has to end sometime, doesn't it?
 
-## Unimplemented Features
-- Additional floor maps (3/12)
-- Earn additional worms
-- Difficulty curve
-- Sound
-
 ## Screenshots
 ![A](screenshots/a.gif?raw=true)
 ![B](screenshots/b.gif?raw=true)
