@@ -37,7 +37,7 @@ bool showPlayer; // User to hide players for animation
 
 // Player
 byte stage = 0; // Successfully completed floors
-byte lives = 3; // Current worms available
+byte lives = BASE_LIVES; // Current worms available
 byte playerX = 0; // Player worm x-position
 byte playerY = 0; // Player worm y-position
 byte playerSpriteFrame; // Current player sprite frame
@@ -54,7 +54,7 @@ byte bombsY[MAX_BOMBS]; // Bombs y-position
 bool bombsLive[MAX_BOMBS] = {0}; // Are bombs active?
 byte bombsType[MAX_BOMBS]; // Sets bomb wick side
 byte bombsFrame[MAX_BOMBS]; // Sets bomb sprite frame
-byte nBombs = 5; // Number of bombs to spawn (set by difficulty)
+byte nBombs = MAX_BOMBS; // Number of bombs to spawn (set by difficulty)
 byte nBombSpawns; // Number of bomb spawns in map
 
 byte facesX[MAX_FACES];
@@ -62,17 +62,23 @@ byte facesY[MAX_FACES];
 byte facesType[MAX_FACES]; // Designate variety of face sprite
 byte facesFrame[MAX_FACES]; // Which frame of face is drawn
 bool facesLive[MAX_FACES] = {0}; // Alive flags
-bool facesMoved[MAX_FACES] = {0}; // Have moved flags
+bool facesMoved[MAX_FACES] = {0}; // Has moved flags
 byte faceCounter = 0; // Counts frames between face movemement
-byte nFaces = 3; // Number of faces to spawn (set by difficulty)
+byte nFaces = MAX_FACES; // Number of faces to spawn (set by difficulty)
 byte nFaceSpawns; // Number of face spawns on map
+byte faceAttack = 99; // Chance of adjacent face attacking
+
+// Difficulty
+byte difficultyFaces[10] = {1,1,2,2,2,3,3,3,3,3}; // Number of faces in first 10 floors
+byte difficultyBombs[10] = {2,4,3,4,5,1,2,3,4,5}; // Number of faces in first 10 floors
+byte difficultyAttack[10] = {90,95,80,85,90,70,75,80,85,90}; // Chance of adjacent face attacking, first 10 floors
 
 // Stage
 byte nMap; // Current stage map
-byte goalX;
-byte goalY;
-byte keyX;
-byte keyY;
+byte goalX; // Portal x-position
+byte goalY; // Portal y-position
+byte keyX; // Key x-position
+byte keyY; // Key y-position
 byte nKeySpawns; // Number of key spawns on map
 byte nPlayerSpawns; // Number of player/stairs spawns on map
 

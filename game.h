@@ -167,9 +167,9 @@ byte readMap(byte nMap, byte nTile) {
 }
 
 
-void setMap(byte nMap) {
-    // Sets current stage map
-
+void setFloorMap(byte nMap) {
+    // Sets up map elements for new floor
+    clearMap();
     // Declare placeholders
     nBombSpawns = 0;
     byte posBombsX[MAX_SPAWN_BOMBS] = {0};
@@ -247,6 +247,59 @@ void setMap(byte nMap) {
 }
 
 
+void setFloorVars(){
+    // Sets basic state variables before each stage
+    playerTurn = true;
+    goalLocked = true;
+    showHazards = false;
+    showPlayer = false;
+    playerStarting = true;
+    startWait = 0;
+}
+
+
+void setFloorDifficulty() {
+    if(ENABLE_HARDMODE) {
+        nFaces = MAX_FACES;
+        nBombs = MAX_BOMBS;
+        faceAttack = 100;
+    } else {
+        if(stage < 10) {
+            nFaces = difficultyFaces[stage];
+            nBombs = difficultyBombs[stage];
+            faceAttack = difficultyAttack[stage] - 1;
+        } else {
+            nFaces = difficultyFaces[9];
+            nBombs = difficultyBombs[9];
+            faceAttack = difficultyAttack[9] - 1;
+        }
+    }
+}
+
+
+void setMapType() {
+    // Selects next map type
+    byte nextMap;
+    if(ENABLE_LEVEL_SELECT) {
+        nMap = SELECT_LEVEL;
+    } else {
+        do {
+            nextMap = random(MAP_TYPES);
+        } while(nMap == nextMap);
+        nMap = nextMap;
+    }
+}
+
+
+void setFloor() {
+    // Handles new floor setup
+    setFloorVars();
+    setFloorDifficulty();
+    setMapType();
+    setFloorMap(nMap);
+}
+
+
 bool checkOccupiedBlocks(byte x, byte y){
     // Returns true if a block is on the specified tile
     bool occupied = false;
@@ -286,31 +339,8 @@ bool checkOccupiedHazards(byte x, byte y) {
 }
 
 
-void setFloor() {
-    // Starts new floor
-    playerTurn = true;
-    goalLocked = true;
-    showHazards = false;
-    showPlayer = false;
-    playerStarting = true;
-    startWait = 0;
-
-    // Map
-    byte nextMap;
-    if(ENABLE_LEVEL_SELECT) {
-        nMap = SELECT_LEVEL;
-    } else {
-        do {
-            nextMap = random(MAP_TYPES);
-        } while(nMap == nextMap);
-        nMap = nextMap;
-    }
-    clearMap();
-    setMap(nMap);
-}
-
-
 void startGame() {
+    // Begins new game
     arduboy.initRandomSeed(); // Seed RNG
     stage = 0;
     lives = BASE_LIVES;
@@ -440,7 +470,7 @@ bool attackPlayer(byte face) {
     if(abs(distanceX) < 2 && abs(distanceY) < 2) {
         moved = true;
         int roll = random(100);
-        if(roll < BASE_ATTACK + (stage*2)) {
+        if(roll < faceAttack) {
             facesX[face] = playerX;
             facesY[face] = playerY;
             checkPlayerDeath();
