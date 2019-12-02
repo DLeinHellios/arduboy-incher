@@ -2,7 +2,7 @@
 
 ## Basic Use
 1. Build .csv file (specifications below) and save in mapdata directory
-2. Run maptool.py and type "command <FILENAME>" - without ".csv"
+2. Run maptool.py and type "command <FILENAME>" - without ".csv" (requires Python 3)
 3. Copy content of exported header file to tilemaps.h and add selection logic to readMap() in game.h
 
 ## Command List
