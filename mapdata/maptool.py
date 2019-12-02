@@ -9,7 +9,7 @@ def print_help():
     '''Prints command list'''
     print("====== COMMAND LIST ======")
     print("QUIT - Exit program")
-    print("HELP - Print this menu")
+    print("HELP - Print command list")
     print("FILE - Print CSV file guidelines")
     print("CONVERT <MAPNAME> - Converts CSV map to byte array")
     print("LIST - Lists CSV files in script directory")
@@ -35,10 +35,10 @@ def print_file():
     print("==========================")
     print("Tile Quantities - Minimum/Maximum")
     print("  0 <= Blocks <= 50")
-    print("  2 <= Spawns <= 4")
     print("  5 <= Bombs <= 10")
     print("  3 <= Faces <= 5")
     print("  1 <= Keys <=  4")
+    print("  2 <= Spawn/Goal <= 4")
     print("==========================")
 
 
